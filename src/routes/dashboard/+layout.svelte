@@ -1,16 +1,11 @@
 <script lang="ts" context="module">
 	import { onMount } from 'svelte';
 	import Navbar1 from '$lib/dashboard/Navbar1.svelte';
-	import Navbar2 from '$lib/dashboard/Navbar2.svelte';
+	import Breadcrumb from '$lib/dashboard/Breadcrumb.svelte';
 </script>
 
 <script lang="ts">
-	import Breadcrumb from '$lib/dashboard/Breadcrumb.svelte';
-
-	let user = {
-		login: ''
-	};
-
+	let user: string;
 	let autorization = true;
 
 	let failed = false;
@@ -27,8 +22,7 @@
 				autorization = false;
 				if (res.ok) {
 					res.json().then((res) => {
-						user = res.user;
-						console.log(user.login);
+						user = res.user.login;
 					});
 				} else {
 					failed = true;
@@ -69,13 +63,10 @@
 	</div>
 {/if}
 
-<main class="flex flex-row w-full ">
-	<Navbar1 />
-	<section class="flex flex-col w-full">
-		<Navbar2 userName={user.login} />
-		<div class="mx-4 my-2 h-full shadow-lg p-4 rounded-lg ">
-			<Breadcrumb />
-			<slot />
-		</div>
-	</section>
-</main>
+<section class="h-screen w-full flex flex-row">
+	<Navbar1 {user} />
+	<main class="w-full h-full p-4">
+		<Breadcrumb />
+		<slot />
+	</main>
+</section>

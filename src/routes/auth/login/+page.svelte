@@ -121,10 +121,10 @@
 </script>
 
 <svelte:head>
-	<title>Zaloguj się do aplikacji</title>
+	<title>Zaloguj się do FitBud</title>
 </svelte:head>
 
-<section class="min-h-screen background-login w-full flex justify-between">
+<section class="min-h-screen background-login w-full flex justify-between ">
 	<div class="shadow-lg w-1/3 p-10 bg-white flex flex-col justify-center">
 		<div class="mb-12">
 			<h1 class="text-4xl text-center font-bold mb-1">Witaj ponownie!</h1>
